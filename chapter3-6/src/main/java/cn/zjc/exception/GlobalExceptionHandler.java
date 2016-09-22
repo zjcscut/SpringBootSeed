@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
         return modelAndView;
     }
 
-    @ExceptionHandler(value = CustomException.class)
+    @ExceptionHandler(value = RuntimeException.class)
     @ResponseBody
     public ErrorInfo<String> defaultErrorHandlerJson(HttpServletRequest request, CustomException e) throws Exception {
         ErrorInfo<String> r = new ErrorInfo<>();

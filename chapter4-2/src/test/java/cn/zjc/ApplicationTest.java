@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.*;
 
@@ -36,5 +37,23 @@ public class ApplicationTest {
         u = userRepository.findUser(1);
         assertTrue(u != null);
         assertEquals("zjc", u.getName());
+    }
+
+
+
+    @Test
+    @Transactional  //开启事务
+    public void TestRollback() throws Exception{
+        // 创建10条记录
+        userRepository.save(new User("AAA", 10));
+        userRepository.save(new User("BBB", 20));
+        userRepository.save(new User("CCC", 30));
+        userRepository.save(new User("DDD", 40));
+        userRepository.save(new User("EEE", 50));
+        userRepository.save(new User("FFF", 60));
+        userRepository.save(new User("GGG", 70));
+        userRepository.save(new User("HHHHHHHHHH", 80)); //长度超过5，全部回滚
+        userRepository.save(new User("III", 90));
+        userRepository.save(new User("JJJ", 100));
     }
 }

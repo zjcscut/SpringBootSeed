@@ -1,25 +1,25 @@
-package cn.zjc.entity;
+package cn.zjc.domain.p;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.Serializable;
 
 /**
  * @author zhangjinci
- * @version 2016/9/22 18:01
+ * @version 2016/9/23 10:23
  * @function
  */
 @Entity
-public class User implements Serializable {
+public class User {
+
 
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(name = "name",length = 5)
+    @Column
     private String name;
-    @Column(name = "age")
+    @Column
     private Integer age;
 
     public User() {
@@ -28,13 +28,6 @@ public class User implements Serializable {
     public User(String name, Integer age) {
         this.name = name;
         this.age = age;
-    }
-
-    public User(Integer id, String name, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-
     }
 
     public Integer getId() {
@@ -59,14 +52,5 @@ public class User implements Serializable {
 
     public void setAge(Integer age) {
         this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
     }
 }

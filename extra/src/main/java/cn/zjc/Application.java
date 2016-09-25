@@ -10,10 +10,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @description
  */
 @SpringBootApplication
-@EnableScheduling //允许任务调度
+@EnableScheduling
 public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(Application.class);
 	}
+
 }
